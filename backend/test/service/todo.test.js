@@ -17,4 +17,16 @@ describe('TODO Service', () => {
     const actual = await todoService.getTodos();
     expect(actual).toEqual(expected);
   });
+
+  it("should be able to add a todo to repository", async () => {
+    const newTodo = { task: "This is a todo to be done" };
+    const todoRepository = {
+        addTodo: jest.fn().mockResolvedValue({ todos: [newTodo] }),
+    };
+
+    const todoService = require("../../src/service/todo")(todoRepository);
+    const result = await todoService.addTodo(newTodo);
+    expect(result.todos).toContainEqual(newTodo);
+    expect(todoRepository.addTodo).toHaveBeenCalledWith(newTodo);
+  });
 });
