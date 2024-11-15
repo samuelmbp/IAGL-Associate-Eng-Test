@@ -15,23 +15,13 @@ const server = () => {
     server.post("/api/todo", async (req, res) => {
         const newTodo = req.body;
 
+        if (!newTodo || !newTodo.task) {
+            return res.status(400).json({ error: "Task is required" });
+        }
+
         repository.addTodo(newTodo);
         res.json(await todoService.getTodos());
     });
-    /**
-  POST /api/todo
-  {
-   "task": "Some API"
-  }
-
-   {
-    "todos": [
-      {
-        "task": "Some API"
-      }
-    ]
-   }
-  **/
 
     return server;
 };
