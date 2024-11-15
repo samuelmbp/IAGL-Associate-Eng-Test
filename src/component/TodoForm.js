@@ -18,8 +18,9 @@ const TodoForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="todo-form">
             <input
+                className="todo-form__input"
                 type="text"
                 placeholder="What needs to be done?"
                 value={task}
@@ -27,7 +28,9 @@ const TodoForm = () => {
                 required
             />
 
-            <button type="submit">Add Task</button>
+            <button type="submit" className="todo-form__button">
+                Add Todo
+            </button>
         </form>
     );
 };

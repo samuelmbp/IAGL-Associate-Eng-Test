@@ -6,7 +6,7 @@ import TodoForm from "./component/TodoForm";
 export default function TodoApp() {
     return (
         <div className="todo-app">
-            <h1>Todo List</h1>
+            <h1 className="todo-app__title">Todo List</h1>
             <TodoForm />
             <TodoList />
         </div>
