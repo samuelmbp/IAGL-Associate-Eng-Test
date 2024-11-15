@@ -19,7 +19,7 @@ const server = () => {
             return res.status(400).json({ error: "Task is required" });
         }
 
-        repository.addTodo(newTodo);
+        await todoService.addTodo(newTodo);
         res.json(await todoService.getTodos());
     });
 
